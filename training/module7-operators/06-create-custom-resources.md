@@ -7,7 +7,7 @@ Now you will create `AIApp` objects and let the operator manage the real workloa
 The first sample sets every important field explicitly.
 
 ```bash
-cd /home/arjun/genai-k8s/training/module7-operators
+cd training/module7-operators
 kubectl apply -f config/samples/ai_v1alpha1_aiapp.yaml
 ```
 

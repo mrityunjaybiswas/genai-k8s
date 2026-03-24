@@ -23,9 +23,9 @@ This adds the Rollout, AnalysisRun, and AnalysisTemplate CRDs plus the controlle
 ### 2. Install the CLI plugin
 
 ```bash
-mkdir -p /home/arjun/.local/bin
-curl -sSL -o /home/arjun/.local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64
-chmod +x /home/arjun/.local/bin/kubectl-argo-rollouts
+mkdir -p $HOME/.local/bin
+curl -sSL -o $HOME/.local/bin/kubectl-argo-rollouts https://github.com/argoproj/argo-rollouts/releases/latest/download/kubectl-argo-rollouts-linux-amd64
+chmod +x $HOME/.local/bin/kubectl-argo-rollouts
 ```
 
 ### 3. Verify the install
@@ -42,5 +42,5 @@ kubectl get pods -n argo-rollouts
 
 ## Troubleshooting
 
-- If the plugin command is not found, make sure `/home/arjun/.local/bin` is on your `PATH`.
+- If the plugin command is not found, make sure `$HOME/.local/bin` is on your `PATH`.
 - If the controller pods are stuck, inspect them with `kubectl describe pod -n argo-rollouts`.

@@ -20,7 +20,7 @@ kubectl create namespace argocd --dry-run=client -o yaml | kubectl apply -f -
 ### 2. Install ArgoCD
 
 ```bash
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.0/manifests/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl wait --for=condition=Ready pod --all -n argocd --timeout=300s
 ```
 
@@ -75,12 +75,3 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 - If port `8081` is busy, use another local port such as `8082`.
 - If CLI login later fails through port-forward, use `--grpc-web`.
 - If pods are not ready, inspect logs with `kubectl logs -n argocd deployment/argocd-server`.
-
-argocd app create guestbook \
-  --repo https://github.com/argoproj/argocd-example-apps \
-  --path guestbook \
-  --dest-server https://kubernetes.default.svc \
-  --dest-namespace default \
-  --sync-policy automated \
-  --auto-prune \
-  --self-heal

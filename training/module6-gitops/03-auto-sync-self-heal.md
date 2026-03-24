@@ -64,6 +64,7 @@ kubectl get deployment genai-genai-platform-api -n genai-gitops
 
 - If drift is not corrected, confirm the application is in automated mode.
 - If the app stays out of sync, inspect the controller logs in `argocd`.
+- If you see `repository not accessible` or `connection refused`, the repo server may be down. Check it with `kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-repo-server`.
 
 ## What Just Happened?
 
