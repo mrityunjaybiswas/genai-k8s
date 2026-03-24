@@ -218,3 +218,19 @@ helm upgrade --install genai genai-platform/helm/genai-platform \
 ```
 
 For the full student walkthrough that installs Prometheus, Grafana, Loki, Promtail, and the GenAI Helm chart together, use [MODULE5_HELM_OBSERVABILITY_APP.md](/home/arjun/genai-k8s/MODULE5_HELM_OBSERVABILITY_APP.md#L1).
+
+## Module 6: GitOps and Progressive Delivery
+
+The GitOps and rollout workshop materials live in:
+
+[training/module6-gitops/01-argocd-installation.md](/home/arjun/genai-k8s/training/module6-gitops/01-argocd-installation.md)
+
+Students deploy ArgoCD, create GitOps applications from Helm charts, enable auto-sync and self-healing, then validate canary releases with Argo Rollouts and Prometheus analysis.
+
+## Module 7: CRDs and Kubernetes Operators
+
+The operator workshop materials live in:
+
+[MODULE7_CRDS_OPERATORS.md](/home/arjun/genai-k8s/MODULE7_CRDS_OPERATORS.md)
+
+Students install Go and Operator SDK, register a custom resource definition, run a Go controller locally against KIND, and manage an AI API workload through a custom `AIApp` resource.

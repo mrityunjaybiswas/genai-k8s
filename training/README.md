@@ -40,3 +40,22 @@ Module structure:
 Start here:
 
 [module6-gitops/01-argocd-installation.md](module6-gitops/01-argocd-installation.md)
+
+### Module 7: CRDs and Kubernetes Operators
+
+This module introduces Kubernetes API extensions and controller development with Operator SDK. Students create an `AIApp` custom resource, reconcile a managed AI workload, and observe status-driven reconciliation in a live KIND cluster.
+
+Module structure:
+
+1. **Prerequisites** - Install Go and Operator SDK on macOS, Linux, or Windows WSL
+2. **Project Scaffold** - Understand the generated Operator SDK project
+3. **Create the CRD** - Register a custom API in Kubernetes
+4. **Build the Controller** - Compile the Go operator
+5. **Run the Operator** - Start the controller against KIND
+6. **Create Custom Resources** - Apply `AIApp` objects
+7. **Reconciliation Patterns** - Change desired state and watch the controller respond
+8. **Cleanup** - Remove lab resources safely
+
+Start here:
+
+[module7-operators/README.md](module7-operators/README.md)
