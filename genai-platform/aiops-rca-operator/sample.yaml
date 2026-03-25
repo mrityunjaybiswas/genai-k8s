@@ -1,0 +1,8 @@
+
+apiVersion: aiops.example.com/v1
+kind: RCARequest
+metadata:
+  name: sample-rca
+spec:
+  namespace: default
+  podName: example-pod

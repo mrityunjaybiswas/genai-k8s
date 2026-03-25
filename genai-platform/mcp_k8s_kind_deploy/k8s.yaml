@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-k8s
+  template:
+    metadata:
+      labels:
+        app: mcp-k8s
+    spec:
+      serviceAccountName: mcp-sa
+      containers:
+      - name: mcp
+        image: mcp-k8s:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-k8s
+spec:
+  selector:
+    app: mcp-k8s
+  ports:
+  - port: 80
+    targetPort: 8000
+    nodePort: 30007
+  type: NodePort
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mcp-sa
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mcp-role
+rules:
+- apiGroups: [""]
+  resources: ["pods","pods/log","nodes","services"]
+  verbs: ["get","list","watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: mcp-binding
+subjects:
+- kind: ServiceAccount
+  name: mcp-sa
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: mcp-role
+  apiGroup: rbac.authorization.k8s.io

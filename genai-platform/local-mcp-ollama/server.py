@@ -1,0 +1,50 @@
+from flask import Flask, request, Response
+import requests
+import json
+
+app = Flask(__name__)
+
+OLLAMA_HOST = "http://ollama:11434"
+
+@app.route('/v1/chat/completions', methods=['POST'])
+def chat_completions():
+    data = request.get_json()
+    model = data.get("model", "llama3")
+    messages = data.get("messages", [])
+
+    # The actual prompt content is in the last message
+    prompt_text = ""
+    if messages:
+        prompt_text = messages[-1].get("content", "")
+
+    # Ollama API payload
+    ollama_payload = {
+        "model": model,
+        "prompt": prompt_text,
+        "stream": True
+    }
+
+    # Forward the request to Ollama and stream the response
+    def generate():
+        response = requests.post(f"{OLLAMA_HOST}/api/generate", json=ollama_payload, stream=True)
+        for chunk in response.iter_content(chunk_size=None):
+            if chunk:
+                # We need to format the response to mimic OpenAI's streaming format
+                # Ollama's response chunk is a JSON object per line
+                ollama_response = json.loads(chunk)
+                content = ollama_response.get("response", "")
+                
+                # Create an OpenAI-compatible streaming chunk
+                openai_chunk = {
+                    "choices": [{
+                        "delta": {
+                            "content": content
+                        }
+                    }]
+                }
+                yield f"data: {json.dumps(openai_chunk)}\n\n"
+
+    return Response(generate(), mimetype='text/event-stream')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8888)

@@ -234,3 +234,27 @@ The operator workshop materials live in:
 [MODULE7_CRDS_OPERATORS.md](/home/arjun/genai-k8s/MODULE7_CRDS_OPERATORS.md)
 
 Students install Go and Operator SDK, register a custom resource definition, run a Go controller locally against KIND, and manage an AI API workload through a custom `AIApp` resource.
+
+## Module 8: AI-Augmented Kubernetes using kubectl-ai and MCP
+
+The AI integration workshop materials live in:
+
+[MODULE8_AI_AUGMENTED_K8S.md](/home/arjun/genai-k8s/MODULE8_AI_AUGMENTED_K8S.md)
+
+Students install and configure `kubectl-ai` and a Kubernetes Model Context Protocol (MCP) server. They use AI slash commands to generate manifests, build custom prompts for cluster insights, and perform interactive troubleshooting and log analysis directly from natural language.
+
+## Module 9: Building and Deploying a Custom MCP Server
+
+The custom MCP server workshop materials live in:
+
+[MODULE9_CUSTOM_MCP_SERVER.md](/home/arjun/genai-k8s/MODULE9_CUSTOM_MCP_SERVER.md)
+
+Students build their own Python-powered Model Context Protocol (MCP) server, containerize it, and deploy it inside the Kubernetes cluster with RBAC privileges to allow AI agents to safely read cluster state.
+
+## Module 10: Agentic AI Systems on Kubernetes
+
+The autonomous agent workshop materials live in:
+
+[MODULE10_AGENTIC_AI_SYSTEMS.md](/home/arjun/genai-k8s/MODULE10_AGENTIC_AI_SYSTEMS.md)
+
+Students explore Kubernetes as a runtime for ML orchestrators and Agents. They deploy a Python-based LLM Agent as a periodic `CronJob` that uses the custom MCP server to fetch cluster state, diagnoses failing pods, and outputs automated Root Cause Analysis logs completely autonomously.

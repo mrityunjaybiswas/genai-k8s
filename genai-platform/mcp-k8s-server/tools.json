@@ -1,0 +1,24 @@
+[
+  {
+    "name": "get_pod_logs",
+    "description": "Fetch logs of a Kubernetes pod",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "description": "Kubernetes namespace"
+        },
+        "pod_name": {
+          "type": "string",
+          "description": "Pod name"
+        },
+        "container": {
+          "type": "string",
+          "description": "Optional container name"
+        }
+      },
+      "required": ["namespace", "pod_name"]
+    }
+  }
+]

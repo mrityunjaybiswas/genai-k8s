@@ -1,0 +1,7 @@
+
+kopf
+kubernetes
+langgraph
+langchain
+openai
+python-dotenv
